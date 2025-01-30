@@ -1,6 +1,16 @@
 # Created by https://www.toptal.com/developers/gitignore/api/visualstudiocode,intellij+all,eclipse,gradle,maven,java,groovy,python,node,clojure,kotlin
 # Edit at https://www.toptal.com/developers/gitignore?templates=visualstudiocode,intellij+all,eclipse,gradle,maven,java,groovy,python,node,clojure,kotlin
 
+# sqlitedb
+sqlite_test.db
+
+# dotenv environment variable files
+.env
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
+
 ### Clojure ###
 pom.xml
 pom.xml.asc
