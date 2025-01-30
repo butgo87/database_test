@@ -70,10 +70,7 @@ public class App {
 
         conn.setAutoCommit(false);
 
-        PreparedStatement pstmt = null;
-
-        try {
-            pstmt = conn.prepareStatement(sql);
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
             pstmt.setString(1, "p00000001");
             pstmt.setString(2, "길동");
@@ -95,7 +92,6 @@ public class App {
         } finally {
             conn.rollback();
             conn.setAutoCommit(true);
-            if (pstmt != null) pstmt.close();
         }
     }
 
@@ -143,9 +139,7 @@ public class App {
 
         conn.setAutoCommit(false);
 
-        PreparedStatement pstmt = null;
-        try {
-            pstmt = conn.prepareStatement(sql);
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, 50);
             pstmt.setString(2, "청");
             int cnt = pstmt.executeUpdate();
@@ -156,7 +150,6 @@ public class App {
         } finally {
             conn.rollback();
             conn.setAutoCommit(false);
-            if (pstmt != null) pstmt.close();
         }
     }
 
@@ -166,19 +159,15 @@ public class App {
 
         conn.setAutoCommit(false);
 
-        Statement stmt = null;
-
-        try {
-            stmt = conn.createStatement();
+        try (Statement stmt = conn.createStatement()) {
             int cnt = stmt.executeUpdate(sql);
 
-            conn.commit();;
+            conn.commit();
 
             System.out.printf("cnt: %d%n", cnt);
         } finally {
             conn.rollback();
             conn.setAutoCommit(true);
-            if (stmt != null) stmt.close();
         }
     }
 

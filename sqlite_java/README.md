@@ -3,4 +3,4 @@
     os: windows 11
     java version: openjdk 21.0.3 2024-04-16 LTS
 #### 실행
-    gradle run
+    gradlew run
