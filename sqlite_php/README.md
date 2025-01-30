@@ -1,13 +1,23 @@
-개발환경
-os: windows 11
-php: PHP 8.4.3
+### PHP를 이용한 데이터베이스 CURD 테스트 코드
+#### 개발환경
+    os: windows 11
+    php: PHP 8.4.3
 
-1. php --ini  php.ini 검색
-2. extension=zip : 주석제거
-3. extension=sqlite3 : 주석제거
-4. extension_dir = "ext" : 주석제거
-5. phpdotenv 설치
-    composer require vlucas/phpdotenv
+#### php.ini 파일수정
+    php --ini: php.ini 파일검색
+    주석제거
+        extension_dir = "ext"
+        extension=zip
+        extension=sqlite3
 
-6. php sqlite.php : php 실행
-7. php -S localhost:3000 : 웹서버 실행
+#### 라이브러리 설치
+    dotenv 설치
+        composer require vlucas/phpdotenv
+    로깅라이브러리 설치
+        composer require monolog/monolog
+
+#### 실행
+    명령 프롬프트에서 실행
+        php sqlite.php
+    웹서버실행
+        php -S localhost:3000
