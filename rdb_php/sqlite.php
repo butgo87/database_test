@@ -1,6 +1,7 @@
 <?php
-require 'vendor/autoload.php';
+require_once __DIR__ . '/vendor/autoload.php';
 
+use Dotenv\Dotenv;
 use Monolog\Logger;
 use Monolog\Level;
 use Monolog\Handler\StreamHandler;
@@ -18,7 +19,14 @@ function createDbConnection() {
     $logger->debug('entering createDbConnection()');
 
     try {
-        $conn = new SQLite3('../sqlite_test.db');
+
+        $dotenv = Dotenv::createImmutable(__DIR__.'/..');
+        $dotenv->load();
+
+        $sqlitedb = $_ENV['SQLITEDB'];
+        $logger->debug('$sqlitedb: '. $sqlitedb);
+
+        $conn = new SQLite3("../$sqlitedb");
         $conn->enableExceptions(true);
         $logger->debug('Connected to the database');
 
