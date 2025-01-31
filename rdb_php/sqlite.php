@@ -167,6 +167,24 @@ function updateData() {
     $logger->debug('exiting updateData()');
 }
 
+function dropTable() {
+    global $logger;
+    global $conn;
+    $logger->debug('entering dropTable()');
+
+    $sql = "drop table user";
+    $logger->debug(sprintf("sql: %s", $sql));
+    try {
+        $conn->exec($sql);
+    } catch (Exception $e) {
+        $logger->error('Error dropping: ' . $e->getMessage());
+        throw $e;
+    }
+    $logger->debug('Dropped table user');
+
+    $logger->debug('exiting dropTable()');
+}
+
 function main() {
     global $logger;
     $logger->debug('entering main()');
@@ -184,6 +202,8 @@ function main() {
 
     deleteData();
     readData();
+
+    dropTable();
 
     $logger->debug('exiting main()');
 }
