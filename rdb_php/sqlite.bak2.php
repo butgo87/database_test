@@ -10,10 +10,10 @@ $logger->pushHandler(new StreamHandler('php://stdout',  Level::Debug));
 
 $logger->debug('entering sqlite.php');
 
-$db = new SQLite3('../sqlite_test.db');
-$logger->debug('Connected to the SQLite database file sqlite_test.db');
+$conn = new SQLite3('../sqlite_test.db');
+$logger->debug('Connected to the database');
 
-$a = 1;
+
 
 function createTable() {
     global $logger;
